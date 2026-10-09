@@ -2,6 +2,11 @@
   "use strict";
 
   const reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Keep the copyright notice correct without requiring an annual content edit.
+  document.querySelectorAll("[data-current-year]").forEach((element) => {
+    element.textContent = String(new Date().getFullYear());
+  });
   const header = document.querySelector(".site-header, body > header");
   const nav = header && header.querySelector("nav");
   const menuToggle = header && header.querySelector(".menu-toggle");

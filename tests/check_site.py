@@ -212,6 +212,8 @@ gates = sources.get("docs/QUALITY-GATES.md", "")
 
 check("wa.me/" in index and "data-event=" in index,
       "Homepage missing WhatsApp conversion links/events")
+check("data-current-year" in index and "new Date().getFullYear()" in js,
+      "Footer copyright year is not updated automatically")
 check("tel:" in index, "Homepage missing telephone conversion link")
 check("prefers-reduced-motion" in css, "Reduced-motion fallback missing")
 check(":focus-visible" in css, "Visible keyboard focus missing")
