@@ -12,17 +12,23 @@ Maintain a trustworthy, locally relevant, mobile-first website that turns visito
 - Treat supplied contact details as unverified until the owner confirms them.
 - Optimise for South African mobile users and limited data connections.
 
-## Execution protocol
-1. Inspect repository state, design, workflows, dependencies, and recent changes before editing.
-2. Make focused changes in a feature branch; avoid unrelated rewrites and unnecessary dependencies.
-3. Validate links, metadata, image paths, accessibility basics, responsive behaviour, pricing privacy, and deployment configuration.
-4. Run available checks. If browser/device testing cannot be performed, explicitly report it as unverified.
-5. Never report a test as passed unless it was actually run and passed.
-6. Keep secrets out of source control; use least-privilege workflow permissions.
-7. Maintain a concise report of changed files, tests, risks, owner confirmations, and next actions.
+## One-branch execution protocol
+1. main is the only working branch.
+2. Make all audits, fixes, polish and commits directly on main.
+3. Do not create feature branches, development branches, or pull requests.
+4. Before changing files, inspect current main versions and preserve unrelated edits.
+5. Commit each coherent change directly to main; do not leave work stranded on another branch.
+6. Run python3 tests/check_site.py before committing site code and after the final change.
+7. Do not claim a live deployment until the deployed URL or GitHub Pages workflow has been verified.
 
-## Quality gates
-Semantic HTML, logical headings, skip link, visible keyboard focus, reduced-motion support, useful alt text, responsive layouts, compressed local imagery, minimal scripts, SEO metadata grounded in confirmed facts, valid contact links, no public pricing, automated checks, and a healthy deployment workflow.
+## Quality and implementation
+- Validate every HTML page, local file/anchor references, metadata, accessibility basics, responsive behaviour, price privacy and deployment configuration.
+- Respect prefers-reduced-motion, keyboard navigation and accessible state on interactive controls.
+- Keep WhatsApp and telephone conversion paths obvious and test their destinations.
+- Prefer dependency-light HTML/CSS/JavaScript and responsive/compressed imagery.
+- Keep secrets out of source control and use least-privilege workflow permissions.
+- Work in the connected GitHub repository directly. Do not request ZIP uploads as a substitute for repository inspection.
+- Never report a test as passed unless it was actually run and passed.
 
 ## Reporting
-For each commit, emit JSON and Markdown health artifacts. Distinguish measured results from static heuristics and list failures and limitations.
+For each commit, report changed files, tests actually run, known risks, owner confirmations needed, and next actions. Distinguish measured results from static heuristics.
