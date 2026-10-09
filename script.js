@@ -55,7 +55,15 @@
   chat.className = "floating-whatsapp";
   chat.href = "https://wa.me/27715752579?text=Hi%20Thabz%2C%20I%27d%20like%20to%20enquire%20about%20driving%20options.";
   chat.setAttribute("aria-label", "Message Thabz Driving School on WhatsApp");
-  chat.innerHTML = '<span class="chat-dot" aria-hidden="true"></span><span>Message Thabz</span><span aria-hidden="true">↗</span>';
+  const chatDot = document.createElement("span");
+  chatDot.className = "chat-dot";
+  chatDot.setAttribute("aria-hidden", "true");
+  const chatText = document.createElement("span");
+  chatText.textContent = "Message Thabz";
+  const chatArrow = document.createElement("span");
+  chatArrow.textContent = "↗";
+  chatArrow.setAttribute("aria-hidden", "true");
+  chat.append(chatDot, chatText, chatArrow);
   chat.dataset.event = "WHATSAPP_CLICK";
   document.body.appendChild(chat);
 
