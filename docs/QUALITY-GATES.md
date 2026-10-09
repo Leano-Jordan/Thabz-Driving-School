@@ -16,3 +16,6 @@ Static checks are not a browser audit. Before launch:
 - Confirm GitHub Pages deployment and the public URL.
 - Run Lighthouse and check Core Web Vitals on mobile and desktop. Target LCP ≤ 2.5s, INP ≤ 200ms and CLS ≤ 0.1 at the 75th percentile.
 - Confirm no package prices or unapproved business claims appear in public HTML, repo docs or images.
+
+
+CI runs on pushes to the single working branch, `main`, plus manual dispatch. This repository does not use feature branches or pull-request-based work for routine changes.
