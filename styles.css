@@ -1,17 +1,17 @@
 :root {
   color-scheme: light;
-  --forest: #103b2c;
-  --forest-deep: #092a20;
-  --forest-bright: #1e6247;
-  --lime: #d8f66a;
-  --lime-dark: #b6d84c;
-  --paper: #f5f4ed;
-  --paper-2: #e9ece2;
-  --white: #fffef9;
-  --ink: #14251d;
-  --muted: #626f66;
-  --line: #d9dfd5;
-  --coral: #f47b65;
+  --forest: #173f34;
+  --forest-deep: #0c2b24;
+  --forest-bright: #2b6652;
+  --lime: #dce8a5;
+  --lime-dark: #b8cb7b;
+  --paper: #f7f5ef;
+  --paper-2: #eeeee5;
+  --white: #fffdf8;
+  --ink: #1b2c26;
+  --muted: #65736b;
+  --line: #dfe3d9;
+  --coral: #c96f57;
   --font-body: "DM Sans", Arial, sans-serif;
   --font-display: "Space Grotesk", "DM Sans", sans-serif;
   font-synthesis: none;
@@ -482,4 +482,20 @@ main[tabindex="-1"]:focus-visible { outline: 3px solid var(--coral); outline-off
     box-shadow: none;
   }
   .site-header:not(.has-mobile-menu) nav .nav-cta { margin-top: 0; }
+}
+
+
+/* Brand polish: calmer evergreen, warm paper and soft-citrus accents. */
+:root { --accent-wash: #e8eddb; --surface-warm: #f1eee4; }
+.site-header { border-bottom-color: #173f3417; }
+.site-header.is-scrolled { box-shadow: 0 12px 32px #0c2b2412; }
+.training-card, .package-card { box-shadow: 0 1px 0 #173f3405; }
+.training-card:hover, .package-card:hover { box-shadow: 0 22px 45px #0c2b2414; }
+.training-card-featured { background: var(--accent-wash); border-color: #d3ddc5; }
+.illustration-learn { background: var(--surface-warm); }
+.packages-section { background: #eeeee5; }
+.button-primary, .nav-cta { box-shadow: 0 7px 18px #0c2b2410; }
+.button-primary:hover, .nav-cta:hover { box-shadow: 0 12px 24px #0c2b241c; }
+@media (prefers-reduced-motion: reduce) {
+  .site-header, .nav-link::after, .nav-cta, .button, .training-card, .package-card { transition-duration: .01ms !important; }
 }
