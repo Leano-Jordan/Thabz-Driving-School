@@ -46,8 +46,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 nav { width: auto; min-height: auto; margin: 0; display: flex; align-items: center; justify-content: flex-end; gap: clamp(18px, 3vw, 38px); font-size: .9rem; font-weight: 700; }
 nav a { text-decoration: none; transition: color .18s ease, background .18s ease; }
 nav a:not(.nav-cta):hover { color: var(--sa-green); }
-.nav-cta { display: inline-flex; align-items: center; gap: 14px; padding: 11px 16px; border-radius: 7px; background: var(--gold); color: var(--black); font-weight: 850; }
-.nav-cta:hover, .button-gold:hover { background: #ffd15d; }
+.nav-cta, .navbtn { display: inline-flex; align-items: center; gap: 14px; padding: 11px 16px; border-radius: 7px; background: var(--gold); color: var(--black); font-weight: 850; }
+.nav-cta:hover, .navbtn:hover, .button-gold:hover { background: #ffd15d; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 18px; border-radius: 7px; text-decoration: none; font-weight: 850; font-size: .91rem; transition: transform .18s ease, background .18s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn.primary, .btn.dark { background: var(--forest); color: white; }
+.btn.primary:hover, .btn.dark:hover, .page-cta .dark:hover { background: var(--forest-2); }
+.btn.outline { border: 1px solid #aeb9b0; color: var(--forest); background: transparent; }
+.btn.outline:hover { background: var(--soft-green); }
+.actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 22px 0 0; }
 .hero { width: min(1180px, calc(100% - 48px)); margin: auto; padding: clamp(48px, 6.2vw, 86px) 0 clamp(50px, 6vw, 78px); display: grid; grid-template-columns: minmax(0, .94fr) minmax(390px, 1.06fr); gap: clamp(36px, 6vw, 84px); align-items: center; position: relative; overflow: visible; background: transparent; color: var(--black); }
 .hero-copy { position: relative; z-index: 1; max-width: 560px; }
 .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 19px; color: var(--sa-green); font-size: .73rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
@@ -133,7 +140,7 @@ h1 > span { display: block; color: var(--sa-green); }
   .brand-mark, .brand > b { width: 39px; height: 39px; }
   nav { gap: 14px; font-size: .82rem; }
   nav > a:not(.nav-cta) { display: none; }
-  .nav-cta { padding: 10px 12px; gap: 8px; }
+  .nav-cta, .navbtn { padding: 10px 12px; gap: 8px; }
   .hero { width: calc(100% - 36px); padding: 42px 0 40px; grid-template-columns: 1fr; gap: 34px; }
   .hero-copy { max-width: 600px; }
   h1 { max-width: 580px; font-size: clamp(3.1rem, 10.5vw, 4.4rem); }
