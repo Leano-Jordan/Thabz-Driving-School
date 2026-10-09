@@ -26,6 +26,7 @@
   window.addEventListener("resize", updateScrollUI, { passive: true });
 
   if (header && nav && menuToggle) {
+    header.classList.add("has-mobile-menu");
     if (!nav.id) nav.id = "primary-navigation";
     menuToggle.setAttribute("aria-controls", nav.id);
     const closeMenu = () => {
