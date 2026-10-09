@@ -2,7 +2,7 @@ name: Thabz Site Quality
 
 on:
   push:
-  pull_request:
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
