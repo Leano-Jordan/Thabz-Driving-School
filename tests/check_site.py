@@ -135,6 +135,9 @@ for page in PAGES:
     check(audit.main_landmarks == 1, f"{page}: expected one main#main-content landmark")
     check(audit.focusable_main, f"{page}: skip-link target should be programmatically focusable")
     check(audit.skip_links >= 1, f"{page}: missing skip link to main content")
+    check("page-top" in audit.ids, f"{page}: missing top-of-page anchor")
+    check(bool(re.search(r'class="footer-top-link" href="#page-top"', source)),
+          f"{page}: footer back-to-top link does not reach the page top")
     check(audit.labelled_navs >= 1, f"{page}: missing labelled navigation")
     check(audit.h1_count == 1, f"{page}: expected exactly one h1")
     check(len(audit.ids) == len(set(audit.ids)),
@@ -216,6 +219,8 @@ check("data-current-year" in index and "new Date().getFullYear()" in js,
       "Footer copyright year is not updated automatically")
 check("tel:" in index, "Homepage missing telephone conversion link")
 check("prefers-reduced-motion" in css, "Reduced-motion fallback missing")
+check("#d8f66a" not in css.lower() and "#d8f66a" not in sources.get("favicon.svg", "").lower(),
+      "Legacy neon-lime accent remains outside the harmonised sage palette")
 check(":focus-visible" in css, "Visible keyboard focus missing")
 check(re.search(r"@media\s*\([^)]*max-width", css) is not None,
       "No narrow-screen breakpoint")
