@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000" role="img" aria-labelledby="title desc">
+<title id="title">Black South African learner driving with an instructor</title>
+<desc id="desc">A warm editorial illustration of a Black learner driver and Black driving instructor practising together in a modern training car, with a South African landscape in the background.</desc>
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9f1e6"/><stop offset="1" stop-color="#c9dfcc"/></linearGradient>
+ <linearGradient id="car" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#dce6de"/></linearGradient>
+ <linearGradient id="seat" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1c543c"/><stop offset="1" stop-color="#0b3022"/></linearGradient>
+</defs>
+<rect width="1200" height="1000" fill="url(#sky)"/>
+<circle cx="960" cy="160" r="76" fill="#ffc247" opacity=".9"/>
+<path d="M0 510 Q160 390 340 500 T710 475 T1200 430 V1000 H0Z" fill="#b7d0b4"/>
+<path d="M0 610 Q220 500 440 590 T870 565 T1200 540 V1000 H0Z" fill="#719c7c"/>
+<path d="M0 760 Q230 690 470 760 T900 725 T1200 740 V1000 H0Z" fill="#315f45"/>
+<!-- distant acacia silhouettes -->
+<g fill="#315f45" opacity=".75"><path d="M130 530h12v-65l-6-32-6 32z"/><path d="M78 445q10-38 36-28 26-19 42 4 30-3 28 25-29 17-106 0z"/><path d="M1030 510h12v-72l-6-34-6 34z"/><path d="M976 424q12-35 38-25 25-19 42 5 31-2 29 24-29 17-109 0z"/></g>
+<!-- car body -->
+<path d="M105 745 Q128 684 225 665 L370 633 475 485 Q505 442 566 440 L785 440 Q836 444 879 492 L1003 630 1092 665 Q1135 687 1147 746 L1130 815 Q1122 844 1087 849 H150 Q116 842 109 810Z" fill="url(#car)" stroke="#183d2b" stroke-width="12" stroke-linejoin="round"/>
+<path d="M399 623 492 494 Q509 468 551 468 H632 V623Z" fill="#7da99d" stroke="#183d2b" stroke-width="9" stroke-linejoin="round"/>
+<path d="M651 468 H778 Q815 470 843 505 L946 623 H651Z" fill="#8cb8b0" stroke="#183d2b" stroke-width="9" stroke-linejoin="round"/>
+<path d="M642 470V625" stroke="#183d2b" stroke-width="10"/>
+<!-- learners -->
+<g>
+ <!-- learner torso -->
+ <path d="M385 638 Q385 563 421 535 Q455 513 497 534 Q541 553 550 639Z" fill="#d94f3d"/>
+ <path d="M407 570 Q439 548 477 570 L493 638 H397Z" fill="#f26d52"/>
+ <!-- learner neck/head -->
+ <path d="M431 505 L432 535 Q453 556 478 535 L477 499Z" fill="#7a472e"/>
+ <ellipse cx="456" cy="466" rx="49" ry="61" fill="#8a5337"/>
+ <!-- hair -->
+ <path d="M407 469 Q386 424 414 395 Q443 368 478 391 Q515 405 506 454 L496 469 488 427 Q456 441 424 422 L417 471Z" fill="#201c19"/>
+ <path d="M412 462 Q398 486 418 507" fill="none" stroke="#201c19" stroke-width="12" stroke-linecap="round"/>
+ <!-- face details -->
+ <path d="M436 468h9m28 0h9" stroke="#201c19" stroke-width="5" stroke-linecap="round"/>
+ <path d="M450 493q9 7 18 0" fill="none" stroke="#4c2b20" stroke-width="4" stroke-linecap="round"/>
+ <path d="M405 459q10-7 22-2m45 0q11-5 22 2" fill="none" stroke="#201c19" stroke-width="6" stroke-linecap="round"/>
+ <!-- arm on steering wheel -->
+ <path d="M485 554 Q536 558 557 598 L591 619" fill="none" stroke="#8a5337" stroke-width="28" stroke-linecap="round"/>
+</g>
+<!-- instructor -->
+<g>
+ <path d="M690 640 Q691 551 725 528 Q762 503 804 531 Q845 558 849 640Z" fill="url(#seat)"/>
+ <path d="M734 506 L734 536 Q760 557 785 536 L783 501Z" fill="#593321"/>
+ <ellipse cx="759" cy="464" rx="49" ry="60" fill="#70442f"/>
+ <path d="M710 462 Q701 422 726 398 Q755 372 787 396 Q819 416 809 459 L798 470 790 426 Q755 438 726 421 L719 467Z" fill="#211c19"/>
+ <path d="M738 466h9m28 0h9" stroke="#211c19" stroke-width="5" stroke-linecap="round"/>
+ <path d="M752 491q9 7 18 0" fill="none" stroke="#3e241b" stroke-width="4" stroke-linecap="round"/>
+ <path d="M724 554 Q687 562 667 590 L629 613" fill="none" stroke="#70442f" stroke-width="28" stroke-linecap="round"/>
+ <path d="M627 611 Q616 606 611 618" fill="none" stroke="#70442f" stroke-width="18" stroke-linecap="round"/>
+</g>
+<!-- steering wheel and dashboard -->
+<path d="M547 636 Q568 584 614 608 Q645 623 642 656" fill="none" stroke="#1d2923" stroke-width="17" stroke-linecap="round"/>
+<circle cx="596" cy="633" r="41" fill="none" stroke="#1d2923" stroke-width="13"/>
+<path d="M596 633l-4 35m4-35 32-19m-32 19-30-16" stroke="#1d2923" stroke-width="8" stroke-linecap="round"/>
+<path d="M222 657 Q330 638 382 642" fill="none" stroke="#aab8ae" stroke-width="7"/>
+<!-- wheels -->
+<g><rect x="224" y="779" width="188" height="143" rx="60" fill="#18211c"/><rect x="252" y="798" width="132" height="105" rx="44" fill="#59675e"/><rect x="280" y="817" width="76" height="68" rx="28" fill="#d4ded5"/><rect x="858" y="779" width="188" height="143" rx="60" fill="#18211c"/><rect x="886" y="798" width="132" height="105" rx="44" fill="#59675e"/><rect x="914" y="817" width="76" height="68" rx="28" fill="#d4ded5"/></g>
+<!-- South African flag-inspired door mark -->
+<path d="M450 704h300" stroke="#0b7749" stroke-width="13" stroke-linecap="round"/>
+<path d="M450 727h185" stroke="#ffc247" stroke-width="13" stroke-linecap="round"/>
+<path d="M450 750h120" stroke="#de3831" stroke-width="13" stroke-linecap="round"/>
+<rect x="930" y="675" width="126" height="48" rx="12" fill="#103b2b"/><text x="993" y="706" font-family="Arial,sans-serif" font-size="21" font-weight="800" text-anchor="middle" fill="#fff">THABZ</text>
+<!-- foreground road -->
+<path d="M0 930 Q290 884 600 930 T1200 915 V1000 H0Z" fill="#d9e1d8"/>
+<path d="M0 968 Q310 926 600 966 T1200 954" fill="none" stroke="#fff" stroke-width="10" stroke-dasharray="50 32"/>
+</svg>
