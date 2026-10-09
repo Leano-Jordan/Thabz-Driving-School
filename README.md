@@ -1,37 +1,37 @@
-# Thabz Driving School — prospect website demo
+# Thabz Driving School — commercial website
 
-A mobile-first static website built to show the business owner a specific creative direction: human driving-lesson photography, a restrained South African flag-inspired palette, scannable packages and direct WhatsApp enquiries.
+A mobile-first static website direction for Thabz Driving School, designed around a distinctive editorial identity, clear training pathways and direct WhatsApp enquiries.
 
-## Contact and prices supplied for the demo
+## Customer journey
+- Start with a clear brand statement and an illustrative driving lesson photo.
+- Explore the approach and the learner, driving licence, Code 8/10, Code 14, PDP and lesson options.
+- Message or call Thabz to confirm availability, current package inclusions and an accurate quote.
+- No package prices are published on the website.
+
+## Business details
 - Phone / WhatsApp: 071 575 2579
 - WhatsApp international format: +27 71 575 2579
-- Code 8 & 10 — Learners R2,000; Driving licence R3,500; Complete R5,500
-- Code 14 — Learners R2,000; Driving licence R8,500; Complete R10,500
-- PDP complete — R1,500
-- Lessons — R1,500 for 2 weeks
-- Learner application + issue — R108 + R60
-- Driving licence application + issue — R240 + R228
+- The supplied price-list details are intentionally not reproduced in this public-facing README or website copy. The owner should confirm any current quote and package inclusions directly with prospective customers.
 
-The figures come from the supplied price-list photo; current prices and exact package inclusions are not confirmed. The public-facing site keeps this as a light prompt to enquire for the latest details rather than exposing internal demo notes.
+## Hero photography
+- The temporary illustrative hero image is by Ron Lach on Pexels: https://www.pexels.com/photo/man-in-white-and-black-striped-dress-shirt-driving-car-9518029/
+- Pexels lists the image as free to use. It depicts a Black adult guiding a learner, but it is not a photograph of Thabz or a verified member of the business.
+- Replace this stock image with owner-approved photography before claiming it shows the actual instructor or vehicle.
 
-## Image
-- Temporary homepage image: [PxHere photo 1708306](https://pxhere.com/en/photo/1708306), identified by PxHere as CC0 / public domain and available for commercial use.
-- The photo is illustrative only; it does not depict Thabz's own instructor or vehicle. Replace it with owner-approved photography when available.
+## Site experience
+- Pages: `index.html`, `services.html`, `contact.html`, and `404.html`.
+- Static HTML, CSS and vanilla JavaScript; no booking backend, database or framework.
+- Responsive layouts, accessible mobile navigation, skip link, visible focus styles, native accessible FAQ disclosures and reduced-motion support.
+- Motion includes scroll reveals, a continuous editorial ticker, subtle hover responses and a scroll progress indicator. Motion is disabled/reduced when the user requests reduced motion.
+- Main conversion path: WhatsApp and telephone.
+- SEO metadata and basic structured business data are included. No unverified address, reviews, pass rates, opening hours or instructor credentials are invented.
 
-## Research references
-- [Centurion Driving School](https://www.centuriondrivingschool.co.za/)
-- [Packages](https://www.centuriondrivingschool.co.za/packages/)
-- [Pretoria Driving School](https://www.pretoriadrivingschool.co.za/)
+## Before launch
+1. Test the published site on a real phone and in Chrome, Edge and Firefox.
+2. Run Lighthouse and field performance checks. Aim for Core Web Vitals in the good range.
+3. Confirm the business's actual service area, current contact details, package inclusions and any applicable application/testing fees with the owner.
+4. Add genuine testimonials or business-owned photography only after receiving approval.
+5. Review repository visibility and older Git history if any previously committed pricing must remain confidential. Removing amounts from the current README does not erase previous public commits.
 
-Observed patterns used: obvious enquiry links, service category choices and visible prices. No competitor brand assets are used.
-
-## Build notes
-- Entry page: index.html
-- Supporting pages: services.html, contact.html, 404.html
-- Static HTML/CSS/JS; no framework, build step, booking backend, database or third-party tracking dependency.
-- Main CTA: WhatsApp; phone links use tel:.
-- Responsive styles, visible keyboard focus, semantic navigation, meaningful image alt text and reduced-motion support.
-- GitHub Pages workflow: .github/workflows/deploy-pages.yml.
-
-## For production
-Confirm phone number, current prices, inclusions, service area, lesson arrangements and actual brand assets with the owner. Do not invent reviews, pass rates, instructor credentials or service guarantees. Test mobile and desktop rendering before public launch.
+## Deployment
+GitHub Pages workflow: `.github/workflows/deploy-pages.yml`.
