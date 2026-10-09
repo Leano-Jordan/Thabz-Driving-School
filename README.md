@@ -46,3 +46,9 @@ A mobile-first static website for Thabz Driving School, designed around a distin
 
 ## Deployment
 GitHub Pages workflow: `.github/workflows/deploy-pages.yml`.
+
+
+## Contact links and social profiles
+- Verified public contact channels in the project: phone and WhatsApp, both using 071 575 2579.
+- No confirmed public email address or official Facebook, Instagram, TikTok or other social-profile URL was available in the supplied project records during this update. The site therefore links directly to the verified phone and WhatsApp channels rather than inventing handles or sending visitors to unrelated profiles.
+- The footer's WhatsApp mark uses the Simple Icons SVG under CC0; the telephone icon is an inline SVG based on Lucide's open-source icon style. No icon CDN or paid icon pack is required.
