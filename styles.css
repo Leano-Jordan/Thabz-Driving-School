@@ -139,20 +139,13 @@ p { margin-top: 0; }
 .card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; color: #718075; font-size: .63rem; font-weight: 800; letter-spacing: .15em; }
 .card-arrow { display: grid; place-items: center; width: 33px; height: 33px; border: 1px solid #dce2d8; border-radius: 50%; color: var(--forest); font-size: 1rem; transition: transform .25s ease, background .2s ease; }
 .training-card:hover .card-arrow { transform: rotate(45deg); background: var(--lime); border-color: var(--lime); }
-.card-illustration { position: relative; height: 100px; margin: 17px 0 13px; overflow: hidden; background: var(--paper); }
-.illustration-learn { background: #e9ede1; }
-.steering-wheel { position: absolute; left: 23px; top: 3px; width: 90px; height: 90px; border: 12px solid var(--forest); border-radius: 50%; }
-.steering-wheel::before { position: absolute; content: ""; top: 25px; left: 25px; width: 16px; height: 16px; border: 5px solid var(--forest); border-radius: 50%; }
-.steering-wheel::after { position: absolute; content: ""; left: 27px; top: 39px; width: 14px; height: 22px; border-left: 5px solid var(--forest); border-right: 5px solid var(--forest); }
-.illustration-dot { position: absolute; right: 26px; top: 18px; width: 58px; height: 58px; border-radius: 50%; background: var(--coral); }
-.illustration-dot::before, .illustration-dot::after { content: ""; position: absolute; inset: 13px; border: 1px solid #103b2c47; border-radius: 50%; }
-.illustration-dot::after { inset: 26px; background: var(--forest); }
-.illustration-drive { background: var(--lime); }
-.road-shape { position: absolute; top: -30px; left: 44%; width: 100px; height: 170px; transform: rotate(25deg); background: var(--forest); clip-path: polygon(23% 0, 80% 0, 100% 100%, 0 100%); }
-.road-dash { position: absolute; left: calc(44% + 46px); top: -7px; height: 115px; border-left: 3px dashed var(--lime); transform: rotate(25deg); }
-.illustration-pdp { display: flex; justify-content: center; align-items: center; background: #244f3e; }
-.pdp-ring { display: grid; place-items: center; width: 75px; height: 75px; border: 1px solid var(--lime); border-radius: 50%; color: var(--lime); font: 700 .94rem var(--font-display); transform: rotate(-13deg); }
-.pdp-star { position: absolute; right: calc(50% - 67px); top: 6px; color: var(--coral); font-size: 2.1rem; }
+.card-photo { position: relative; height: 158px; margin: 18px 0 18px; overflow: hidden; isolation: isolate; background: #dfe4dc; }
+.card-photo::after { position: absolute; content: ""; inset: 45% 0 0; z-index: 1; background: linear-gradient(180deg, transparent, #0c2b2426); pointer-events: none; }
+.card-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 45%; transition: transform .65s cubic-bezier(.2,.7,.2,1), filter .35s ease; }
+.training-card:hover .card-photo img { transform: scale(1.045); }
+.card-photo-learner img { object-position: center 42%; }
+.card-photo-road img { object-position: center 54%; }
+.card-photo-pdp img { object-position: center 46%; }
 .training-card h3 { margin: 7px 0 12px; font-size: 1.55rem; line-height: 1.12; letter-spacing: -.055em; }
 .training-card p { margin: 0 0 20px; color: #647067; font-size: .85rem; line-height: 1.75; }
 .training-card > a { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 17px; border-top: 1px solid #e1e5dd; color: var(--forest); font-size: .79rem; font-weight: 800; text-decoration: none; }
@@ -498,4 +491,16 @@ main[tabindex="-1"]:focus-visible { outline: 3px solid var(--coral); outline-off
 .button-primary:hover, .nav-cta:hover { box-shadow: 0 12px 24px #0c2b241c; }
 @media (prefers-reduced-motion: reduce) {
   .site-header, .nav-link::after, .nav-cta, .button, .training-card, .package-card { transition-duration: .01ms !important; }
+}
+
+/* Photography-led training cards: keep the imagery confident, local and uncluttered. */
+.training-card { padding-top: 24px; }
+.training-card .card-photo { border-radius: 4px; }
+.training-card-featured .card-photo { box-shadow: 0 8px 22px #173f3410; }
+.training-card-dark .card-photo { border: 1px solid #ffffff18; }
+@media (max-width: 640px) {
+  .card-photo { height: clamp(150px, 47vw, 205px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-photo img { transition: none !important; }
 }
