@@ -1,56 +1,223 @@
 #!/usr/bin/env python3
-"""Dependency-free static quality checks for the Thabz site."""
+"""Dependency-free multi-page static quality checks for the Thabz site."""
+from html.parser import HTMLParser
 from pathlib import Path
+import json
 import re
 import sys
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
+PAGES = ("index.html", "services.html", "contact.html", "404.html")
+REQUIRED_FILES = (*PAGES, "styles.css", "script.js", "README.md", "favicon.svg")
 errors = []
 
-def read(path):
-    file = ROOT / path
-    if not file.is_file():
-        errors.append(f"Missing required file: {path}")
-        return ""
-    return file.read_text(encoding="utf-8")
-
-html = read("index.html")
-css = read("styles.css")
-js = read("script.js")
-read("README.md")
 
 def check(condition, message):
     if not condition:
         errors.append(message)
 
-check(bool(re.search(r"<title>\s*[^<]+</title>", html, re.I)), "Missing/empty title")
-check(bool(re.search(r'<meta\s+name="description"\s+content="[^"]+"', html, re.I)), "Missing meta description")
-check(bool(re.search(r"<main\b[^>]*id=\"main-content\"", html, re.I)), "Missing main landmark / skip target")
-check('href="#main-content"' in html, "Missing skip link")
-check('aria-label="Main navigation"' in html, "Main navigation is not labelled")
+
+class PageAudit(HTMLParser):
+    """Collect relevant markup without external test dependencies."""
+
+    def __init__(self, source):
+        super().__init__(convert_charrefs=True)
+        self.source = source
+        self.ids = []
+        self.h1_count = 0
+        self.main_landmarks = 0
+        self.skip_links = 0
+        self.labelled_navs = 0
+        self.images = []
+        self.references = []
+        self.metas = {}
+        self.visible_text = []
+        self.json_scripts = []
+        self._inside_ignored = None
+        self._inside_json = False
+        self._json_buffer = []
+
+    def handle_starttag(self, tag, attributes):
+        attrs = dict(attributes)
+        if "id" in attrs:
+            self.ids.append(attrs["id"])
+        if tag == "h1":
+            self.h1_count += 1
+        if tag == "main" and attrs.get("id") == "main-content":
+            self.main_landmarks += 1
+        if tag == "a" and attrs.get("href") == "#main-content":
+            self.skip_links += 1
+        if tag == "nav" and attrs.get("aria-label"):
+            self.labelled_navs += 1
+        if tag == "img":
+            self.images.append(attrs)
+        for attribute in ("href", "src"):
+            value = attrs.get(attribute)
+            if value:
+                self.references.append((tag, attribute, value))
+        if attrs.get("srcset"):
+            for candidate in attrs["srcset"].split(","):
+                url = candidate.strip().split(" ")[0]
+                if url:
+                    self.references.append((tag, "srcset", url))
+        for attribute in attrs:
+            if attribute.lower().startswith("on"):
+                errors.append(f"{self.source}: inline event handler {attribute} found")
+        if tag == "a" and attrs.get("target") == "_blank":
+            rel = set(attrs.get("rel", "").lower().split())
+            if not {"noopener", "noreferrer"}.issubset(rel):
+                errors.append(f"{self.source}: target=_blank link lacks rel=noopener noreferrer")
+        if tag == "meta":
+            key = attrs.get("name") or attrs.get("property")
+            if key and attrs.get("content"):
+                self.metas[key.lower()] = attrs["content"].strip()
+        if tag == "script" and attrs.get("type", "").lower() == "application/ld+json":
+            self._inside_json = True
+            self._json_buffer = []
+        elif tag in ("script", "style"):
+            self._inside_ignored = tag
+
+    def handle_endtag(self, tag):
+        if tag == self._inside_ignored:
+            self._inside_ignored = None
+        if tag == "script" and self._inside_json:
+            self.json_scripts.append("".join(self._json_buffer))
+            self._inside_json = False
+            self._json_buffer = []
+
+    def handle_data(self, data):
+        if self._inside_json:
+            self._json_buffer.append(data)
+        elif self._inside_ignored is None:
+            self.visible_text.append(data)
+
+
+def read_file(relative_path):
+    path = ROOT / relative_path
+    if not path.is_file():
+        errors.append(f"Missing required file: {relative_path}")
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
+sources = {path: read_file(path) for path in REQUIRED_FILES}
+sources["README.md"] = read_file("README.md")
+sources["AGENTS.md"] = read_file("AGENTS.md")
+sources["docs/QUALITY-GATES.md"] = read_file("docs/QUALITY-GATES.md")
+
+audits = {}
+for page in PAGES:
+    source = sources.get(page, "")
+    if not source:
+        continue
+    audit = PageAudit(page)
+    try:
+        audit.feed(source)
+        audit.close()
+    except Exception as exc:
+        errors.append(f"{page}: HTML parser error: {exc}")
+    audits[page] = audit
+
+    check(bool(re.search(r"<html\b[^>]*\blang=[\"'][^\"']+[\"']", source, re.I)),
+          f"{page}: missing document language")
+    check(bool(re.search(r"<title>\s*[^<]+\s*</title>", source, re.I)),
+          f"{page}: missing/empty title")
+    check(bool(audit.metas.get("viewport")), f"{page}: missing viewport metadata")
+    check(bool(audit.metas.get("description")), f"{page}: missing meta description")
+    check(bool(audit.metas.get("theme-color")), f"{page}: missing theme-color metadata")
+    check(audit.main_landmarks == 1, f"{page}: expected one main#main-content landmark")
+    check(audit.skip_links >= 1, f"{page}: missing skip link to main content")
+    check(audit.labelled_navs >= 1, f"{page}: missing labelled navigation")
+    check(audit.h1_count == 1, f"{page}: expected exactly one h1")
+    check(len(audit.ids) == len(set(audit.ids)),
+          f"{page}: duplicate id attribute(s) found")
+    check("favicon.svg" in source, f"{page}: missing custom favicon")
+    check("styles.css" in source, f"{page}: missing stylesheet")
+    check("script.js" in source, f"{page}: missing shared interaction script")
+    check(bool(audit.metas.get("og:title")), f"{page}: missing Open Graph title")
+    check(bool(audit.metas.get("og:description")),
+          f"{page}: missing Open Graph description")
+    check(audit.metas.get("twitter:card") == "summary_large_image",
+          f"{page}: missing large-image social card metadata")
+    for image in audit.images:
+        check(bool(image.get("alt", "").strip()),
+              f"{page}: image missing meaningful alt text")
+    for script_text in audit.json_scripts:
+        try:
+            json.loads(script_text)
+        except json.JSONDecodeError as exc:
+            errors.append(f"{page}: invalid JSON-LD: {exc}")
+
+# Validate local files and fragment targets across every page.
+for page, audit in audits.items():
+    for tag, attribute, value in audit.references:
+        if value.startswith("//"):
+            continue
+        if value.startswith("#"):
+            if len(value) > 1:
+                check(value[1:] in audit.ids, f"{page}: missing same-page anchor {value}")
+            continue
+        parsed = urlsplit(value)
+        if parsed.scheme or parsed.netloc:
+            if parsed.scheme.lower() == "javascript":
+                errors.append(f"{page}: javascript: URL found")
+            continue
+        path = parsed.path
+        fragment = parsed.fragment
+        if not path:
+            if fragment:
+                check(fragment in audit.ids, f"{page}: missing same-page anchor #{fragment}")
+            continue
+        target_path = (ROOT / path).resolve()
+        try:
+            target_path.relative_to(ROOT.resolve())
+        except ValueError:
+            errors.append(f"{page}: local reference escapes repository: {value}")
+            continue
+        check(target_path.is_file(), f"{page}: broken local {attribute} reference: {value}")
+        if fragment and path in audits:
+            check(fragment in audits[path].ids,
+                  f"{page}: broken cross-page anchor: {value}")
+
+# Public pricing must stay private in all public page text and the current README.
+price_pattern = re.compile(r"\bR\s?\d[\d, ]*(?:\.\d{2})?\b", re.I)
+for page, audit in audits.items():
+    visible_text = " ".join(audit.visible_text)
+    check(not price_pattern.search(visible_text),
+          f"{page}: possible public price figure found")
+check(not price_pattern.search(sources.get("README.md", "")),
+      "README.md: possible public price figure found")
+
+index = sources.get("index.html", "")
+css = sources.get("styles.css", "")
+js = sources.get("script.js", "")
+readme = sources.get("README.md", "")
+agents = sources.get("AGENTS.md", "").lower()
+gates = sources.get("docs/QUALITY-GATES.md", "")
+
+check("wa.me/" in index and "data-event=" in index,
+      "Homepage missing WhatsApp conversion links/events")
+check("tel:" in index, "Homepage missing telephone conversion link")
 check("prefers-reduced-motion" in css, "Reduced-motion fallback missing")
 check(":focus-visible" in css, "Visible keyboard focus missing")
-check("wa.me/" in html and "data-event=" in html, "WhatsApp conversion links missing")
-check("tel:" in html, "Phone conversion link missing")
-
-public_text = re.sub(r"<script\b.*?</script>|<style\b.*?</style>", " ", html, flags=re.I | re.S)
-public_text = re.sub(r"<[^>]+>", " ", public_text)
-public_text = re.sub(r"&(?:amp|nbsp|quot|apos|lt|gt);", " ", public_text, flags=re.I)
-check(not re.search(r"R\s?\d[\d,]*(?:\.\d{2})?", public_text, re.I), "Possible public price found in homepage")
-
-for attr, value in re.findall(r'\b(src|href)="([^"]+)"', html, re.I):
-    if value.startswith(("#", "https://", "http://", "tel:", "mailto:", "data:")):
-        continue
-    path = value.split("?", 1)[0].split("#", 1)[0]
-    if path and not (ROOT / path).exists():
-        errors.append(f"Broken local {attr} reference: {value}")
-
-check(len(re.findall(r"<h1\b", html, re.I)) == 1, "Expected exactly one h1")
-check(bool(re.search(r'<img\b[^>]*\balt="[^"]+"', html, re.I)), "Image missing alt text")
-check(bool(re.search(r"@media\s*\([^)]*max-width", css)), "No narrow-screen breakpoint")
+check(re.search(r"@media\s*\([^)]*max-width", css) is not None,
+      "No narrow-screen breakpoint")
 check("innerHTML" not in js, "Review potentially unsafe innerHTML usage")
+check("IntersectionObserver" in js, "Scroll reveal does not use IntersectionObserver")
+check("aria-expanded" in js and "aria-expanded" in index,
+      "Mobile navigation is missing an accessible expanded state")
+check('fetchpriority="high"' in index and "srcset=" in index and "sizes=" in index,
+      "Hero image is missing priority/responsive source attributes")
+check("images.pexels.com" in index and "Pexels" in readme,
+      "Hero stock image source/credit is not documented")
+check("the only working branch" in agents and "do not create feature branches" in agents,
+      "AGENTS.md is missing the main-only branch rule")
+check("python3 tests/check_site.py" in readme or "python3 tests/check_site.py" in gates,
+      "No documented command for running quality checks")
 
-print("Thabz static quality checks")
+print("Thabz multi-page static quality checks")
+print(f"Pages audited: {len(audits)}")
 print(f"Errors: {len(errors)}")
 for error in errors:
     print(f"FAIL: {error}")
