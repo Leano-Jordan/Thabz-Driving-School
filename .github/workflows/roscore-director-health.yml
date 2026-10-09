@@ -11,7 +11,7 @@ jobs:
   health-report:
     runs-on: ubuntu-latest
     env:
-      DIRECTOR: "UNASSIGNED"
+      DIRECTOR: "Thabz"
       REPOSITORY: "${{ github.repository }}"
       COMMIT_SHA: "${{ github.sha }}"
       BRANCH: "${{ github.ref_name }}"
