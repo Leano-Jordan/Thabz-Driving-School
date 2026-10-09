@@ -11,6 +11,7 @@ Understand the training options → scan listed packages → contact Thabz direc
 - South African flag-inspired accents used with restraint: deep green structure, green links, gold CTA, and small red/blue/black details.
 - White and soft-sage sections, clear type hierarchy, small cards and deliberate spacing.
 - No fabricated reviews, scores, badges or claims.
+- Public website must not display service prices; visitors request quotes privately by WhatsApp or social DM.
 
 ## Scope
 - Homepage, training-options page, contact page and 404 page.
@@ -30,8 +31,8 @@ Understand the training options → scan listed packages → contact Thabz direc
 
 Prices were transcribed from supplied project material and need owner confirmation before a real public launch.
 
-## Temporary image
-The homepage uses a CC0 photo from PxHere (https://pxhere.com/en/photo/1708306) as illustrative imagery, not as a claim that the pictured people or vehicle belong to Thabz. Replace with approved business photography if supplied.
+## Image policy
+The homepage uses the repository-local `assets/thabz-driving-lesson.svg`, depicting Black South African learner and instructor characters. Prefer owner-approved photos from Thabz's own public social profiles when the exact business account and image usage rights can be verified. Avoid unrelated stock photos that misrepresent the business.
 
 ## Do not fabricate
 Address, service coverage, hours, transmission type, pick-up/drop-off, instructors, qualifications, accreditation, reviews, pass rates, guarantees or exact package inclusions.
