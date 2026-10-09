@@ -463,3 +463,23 @@ body.motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0
 
 /* Visible focus for the keyboard skip-navigation destination. */
 main[tabindex="-1"]:focus-visible { outline: 3px solid var(--coral); outline-offset: 5px; }
+
+/* Keep primary navigation available when JavaScript is disabled. */
+@media (max-width: 760px) {
+  .site-header:not(.has-mobile-menu) .menu-toggle { display: none; }
+  .site-header:not(.has-mobile-menu) nav {
+    position: static;
+    width: 100%;
+    padding: 10px 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+  }
+  .site-header:not(.has-mobile-menu) nav .nav-cta { margin-top: 0; }
+}
