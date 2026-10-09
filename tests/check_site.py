@@ -108,6 +108,9 @@ sources["README.md"] = read_file("README.md")
 sources["AGENTS.md"] = read_file("AGENTS.md")
 sources["docs/QUALITY-GATES.md"] = read_file("docs/QUALITY-GATES.md")
 sources[".github/workflows/site-quality.yml"] = read_file(".github/workflows/site-quality.yml")
+sources["data/business.json"] = read_file("data/business.json")
+sources["THABZ_WEBSITE_SPEC.md"] = read_file("THABZ_WEBSITE_SPEC.md")
+sources["ROSCORE_PROJECT_MANIFEST.md"] = read_file("ROSCORE_PROJECT_MANIFEST.md")
 
 audits = {}
 for page in PAGES:
@@ -192,6 +195,13 @@ for page, audit in audits.items():
           f"{page}: possible public price figure found")
 check(not price_pattern.search(sources.get("README.md", "")),
       "README.md: possible public price figure found")
+for public_doc in ("data/business.json", "THABZ_WEBSITE_SPEC.md", "ROSCORE_PROJECT_MANIFEST.md"):
+    check(not price_pattern.search(sources.get(public_doc, "")),
+          f"{public_doc}: possible public price or internal budget figure found")
+try:
+    json.loads(sources.get("data/business.json", ""))
+except json.JSONDecodeError as exc:
+    errors.append(f"data/business.json: invalid JSON: {exc}")
 
 index = sources.get("index.html", "")
 css = sources.get("styles.css", "")

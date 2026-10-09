@@ -4,23 +4,7 @@
   "phoneTel": "+27715752579",
   "whatsappUrl": "https://wa.me/27715752579",
   "marketContext": "Centurion search query; confirm exact service area with owner",
-  "listedPricesFromPhoto": {
-    "code8And10": {
-      "learners": 2000,
-      "drivingLicence": 3500,
-      "complete": 5500
-    },
-    "code14": {
-      "learners": 2000,
-      "drivingLicence": 8500,
-      "complete": 10500
-    },
-    "pdpComplete": 1500,
-    "lessonsTwoWeeks": 1500,
-    "learnerApplicationAndIssue": "R108 + R60",
-    "drivingLicenceApplicationAndIssue": "R240 + R228"
-  },
-  "priceSource": "User-supplied photo; current status and package inclusions unverified",
+  "priceDisclosure": "Prices, package amounts and internal budget details are intentionally excluded from this public repository.",
   "claimsRequiringVerification": [
     "current prices and package inclusions",
     "exact service area and address",

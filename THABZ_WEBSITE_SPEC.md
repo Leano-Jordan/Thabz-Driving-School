@@ -20,16 +20,10 @@ Understand the training options → scan listed packages → contact Thabz direc
 - Mobile-first layout, keyboard focus and reduced-motion support.
 - No third-party fonts or paid assets.
 
-## Supplied business information
+## Public business information
 - Phone / WhatsApp: 071 575 2579.
-- Code 8 & 10: Learners R2,000; Driving licence R3,500; Complete R5,500.
-- Code 14: Learners R2,000; Driving licence R8,500; Complete R10,500.
-- PDP complete: R1,500.
-- Lessons for two weeks: R1,500.
-- Learner application + issue: R108 + R60.
-- Driving licence application + issue: R240 + R228.
-
-Prices were transcribed from supplied project material and need owner confirmation before a real public launch.
+- Public site and repository documentation must not contain package prices or internal budget figures.
+- Current prices, inclusions and fee details are discussed privately with the owner and are not stored in this public repository.
 
 ## Image policy
 The homepage uses the repository-local `assets/thabz-driving-lesson.svg`, depicting Black South African learner and instructor characters. Prefer owner-approved photos from Thabz's own public social profiles when the exact business account and image usage rights can be verified. Avoid unrelated stock photos that misrepresent the business.
@@ -40,7 +34,7 @@ Address, service coverage, hours, transmission type, pick-up/drop-off, instructo
 ## Demo acceptance checks
 - No plumbing copy or visual remnants.
 - All WhatsApp actions target +27 71 575 2579; phone links use tel:+27715752579.
-- Price groups match the supplied material.
+- No package prices or internal budget figures are present in public pages, data files or documentation.
 - Navigation targets exist; supporting pages use matching visual tokens.
 - Readable on narrow mobile screens and wide desktop screens.
 - No unsupported trust claims.

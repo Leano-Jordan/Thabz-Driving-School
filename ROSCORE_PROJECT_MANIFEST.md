@@ -12,7 +12,7 @@ Landing page → understand training categories → choose an enquiry → WhatsA
 ## Commercial constraints
 - Pricing stays private; public copy uses enquiry prompts only.
 - No unsupported claims, fake social proof, or unconfirmed package inclusions.
-- Client budget context: R5,000. This is internal context, never public website copy.
+- Commercial budget details are not stored in public project files.
 - Owner must confirm contact details, prices/inclusions, service area, arrangements, and brand imagery.
 
 ## Technical baseline
