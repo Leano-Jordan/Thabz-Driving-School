@@ -27,6 +27,7 @@ class PageAudit(HTMLParser):
         self.ids = []
         self.h1_count = 0
         self.main_landmarks = 0
+        self.focusable_main = False
         self.skip_links = 0
         self.labelled_navs = 0
         self.images = []
@@ -46,6 +47,7 @@ class PageAudit(HTMLParser):
             self.h1_count += 1
         if tag == "main" and attrs.get("id") == "main-content":
             self.main_landmarks += 1
+            self.focusable_main = attrs.get("tabindex") == "-1"
         if tag == "a" and attrs.get("href") == "#main-content":
             self.skip_links += 1
         if tag == "nav" and attrs.get("aria-label"):
@@ -105,6 +107,7 @@ sources = {path: read_file(path) for path in REQUIRED_FILES}
 sources["README.md"] = read_file("README.md")
 sources["AGENTS.md"] = read_file("AGENTS.md")
 sources["docs/QUALITY-GATES.md"] = read_file("docs/QUALITY-GATES.md")
+sources[".github/workflows/site-quality.yml"] = read_file(".github/workflows/site-quality.yml")
 
 audits = {}
 for page in PAGES:
@@ -127,6 +130,7 @@ for page in PAGES:
     check(bool(audit.metas.get("description")), f"{page}: missing meta description")
     check(bool(audit.metas.get("theme-color")), f"{page}: missing theme-color metadata")
     check(audit.main_landmarks == 1, f"{page}: expected one main#main-content landmark")
+    check(audit.focusable_main, f"{page}: skip-link target should be programmatically focusable")
     check(audit.skip_links >= 1, f"{page}: missing skip link to main content")
     check(audit.labelled_navs >= 1, f"{page}: missing labelled navigation")
     check(audit.h1_count == 1, f"{page}: expected exactly one h1")
@@ -215,6 +219,9 @@ check("the only working branch" in agents and "do not create feature branches" i
       "AGENTS.md is missing the main-only branch rule")
 check("python3 tests/check_site.py" in readme or "python3 tests/check_site.py" in gates,
       "No documented command for running quality checks")
+workflow = sources.get(".github/workflows/site-quality.yml", "")
+check('branches: ["main"]' in workflow and "pull_request:" not in workflow,
+      "Site quality workflow should run on main only")
 
 print("Thabz multi-page static quality checks")
 print(f"Pages audited: {len(audits)}")
