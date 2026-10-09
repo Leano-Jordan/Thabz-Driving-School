@@ -1,10 +1,35 @@
 {
-  "name":"Plumbers in Pretoria",
-  "phone":"082 503 0657",
-  "phoneTel":"+27825030657",
-  "address":"481 Partridge Ave, Roseville, Pretoria",
-  "googleRating":5.0,
-  "googleReviews":20,
-  "verifiedServices":["Emergency Plumbing","Blocked Drains","Geysers","Burst Pipes","Leak Detection","General Plumbing"],
-  "claimsRequiringVerification":["24/7 availability","exact service areas","PIRB/IOPSA registration","insurance","response-time guarantees","workmanship guarantees","WhatsApp availability"]
+  "name": "Thabz Driving School",
+  "phone": "071 575 2579",
+  "phoneTel": "+27715752579",
+  "whatsappUrl": "https://wa.me/27715752579",
+  "marketContext": "Centurion search query; confirm exact service area with owner",
+  "listedPricesFromPhoto": {
+    "code8And10": {
+      "learners": 2000,
+      "drivingLicence": 3500,
+      "complete": 5500
+    },
+    "code14": {
+      "learners": 2000,
+      "drivingLicence": 8500,
+      "complete": 10500
+    },
+    "pdpComplete": 1500,
+    "lessonsTwoWeeks": 1500,
+    "learnerApplicationAndIssue": "R108 + R60",
+    "drivingLicenceApplicationAndIssue": "R240 + R228"
+  },
+  "priceSource": "User-supplied photo; current status and package inclusions unverified",
+  "claimsRequiringVerification": [
+    "current prices and package inclusions",
+    "exact service area and address",
+    "operating hours and lesson availability",
+    "manual or automatic transmission",
+    "pick-up/drop-off",
+    "instructor qualifications and registration",
+    "test-booking support",
+    "reviews, pass rates and guarantees",
+    "current application and testing-centre fees"
+  ]
 }
