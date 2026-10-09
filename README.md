@@ -18,6 +18,12 @@ A mobile-first static website for Thabz Driving School, designed around a distin
 - Pexels lists the image as free to use. It depicts a Black adult sitting beside a young learner during a practice drive; it is not a photograph of Thabz or a verified member of the business.
 - Replace this stock image with owner-approved photography before claiming it shows the actual instructor or vehicle.
 
+## Training-card photography
+- Learner's licence card: Ron Lach, Pexels — https://www.pexels.com/photo/boy-in-gray-sweater-driving-car-9518016/ (free under the Pexels License).
+- Driving licence card: Magda Ehlers, Pexels — https://www.pexels.com/photo/a-car-driving-on-the-road-3886669/ (Chapman's Peak Drive, Cape Town; free under the Pexels License).
+- PDP / progress card: Gugulethu Ndlalani, Pexels — https://www.pexels.com/photo/black-men-and-freight-rusty-transport-4612683/ (Pimville, Gauteng; free under the Pexels License).
+- Pexels permits commercial website use without required attribution: https://www.pexels.com/license/. The stock photos are illustrative, not endorsements or photographs of Thabz's own clients, staff or vehicles.
+
 ## Site experience
 - Pages: `index.html`, `services.html`, `contact.html`, and `404.html`.
 - Static HTML, CSS and vanilla JavaScript; no booking backend, database or framework.
