@@ -211,6 +211,12 @@ check("innerHTML" not in js, "Review potentially unsafe innerHTML usage")
 check("IntersectionObserver" in js, "Scroll reveal does not use IntersectionObserver")
 check("aria-expanded" in js and "aria-expanded" in index,
       "Mobile navigation is missing an accessible expanded state")
+check("has-mobile-menu" in js and ".site-header:not(.has-mobile-menu) nav" in css,
+      "mobile navigation must remain available without JavaScript")
+check('targetId === "#main-content"' in js and "target.focus({ preventScroll: true })" in js,
+      "Skip navigation does not programmatically focus main content")
+check("floatingSuppressed = floatingVisibleTargets.size > 0" in js,
+      "Floating WhatsApp CTA can obscure the contact area or footer")
 check('fetchpriority="high"' in index and "srcset=" in index and "sizes=" in index,
       "Hero image is missing priority/responsive source attributes")
 check("images.pexels.com" in index and "Pexels" in readme,
