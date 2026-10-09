@@ -448,3 +448,15 @@ body.motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0
   body.motion-ready [data-reveal] { opacity: 1 !important; transform: none !important; }
   .ticker-track { animation: none !important; }
 }
+
+/* 404 page */
+.not-found { width: min(1180px, calc(100% - 56px)); min-height: 60vh; margin: auto; padding: clamp(65px, 9vw, 120px) 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
+.not-found h1 { font-size: clamp(3.15rem, 6.4vw, 5.8rem); }
+.not-found > p:not(.eyebrow) { max-width: 590px; margin: 26px 0 0; color: var(--muted); font-size: .97rem; line-height: 1.8; }
+.not-found-actions { margin-top: 28px; display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
+.not-found .text-link > span { color: var(--coral); }
+@media (max-width: 760px) {
+  .not-found { width: calc(100% - 36px); min-height: 58vh; padding: 64px 0; }
+  .not-found h1 { font-size: clamp(3rem, 10vw, 4.7rem); }
+  .not-found-actions { align-items: flex-start; flex-direction: column; gap: 18px; }
+}
