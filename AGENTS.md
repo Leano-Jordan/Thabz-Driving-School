@@ -16,6 +16,7 @@ Maintain a trustworthy, locally relevant, mobile-first website that turns visito
 1. main is the only working branch.
 2. Make all audits, fixes, polish and commits directly on main.
 3. Do not create feature branches, development branches, or pull requests.
+4. Historical branch refs may still appear in GitHub; they are inactive. Never check them out, use them as a base, or commit to them. Prune them only when a repository action with delete-ref permission is available and their contents have been checked.
 4. Before changing files, inspect current main versions and preserve unrelated edits.
 5. Commit each coherent change directly to main; do not leave work stranded on another branch.
 6. Run python3 tests/check_site.py before committing site code and after the final change.
