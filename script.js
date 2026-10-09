@@ -41,7 +41,7 @@
       link.addEventListener("click", closeMenu);
     });
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
+      if (event.key === "Escape" && header.classList.contains("is-menu-open")) {
         closeMenu();
         menuToggle.focus();
       }
