@@ -254,3 +254,233 @@ h1 > span { display: block; color: var(--sa-green); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
+
+/* Visual refinement — stronger editorial hierarchy, richer surfaces and clearer conversion paths. */
+:root {
+  --forest: #103b2b;
+  --forest-2: #1b6042;
+  --sa-green: #08784c;
+  --gold: #ffc247;
+  --paper: #f8f8f3;
+  --line: #dce4da;
+  --soft-green: #e7efe5;
+}
+::selection { background: #ffc247; color: #103b2b; }
+body {
+  background:
+    radial-gradient(ellipse at 5% 14%, #e8f0e4 0, transparent 30rem),
+    var(--paper);
+}
+.topline { background: #0a2a1e; }
+.flag-accent { height: 4px; }
+.site-header {
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 8px 24px #122b1b08;
+}
+.brand-mark, .brand > b {
+  border-radius: 13px 13px 13px 4px;
+  box-shadow: 0 5px 12px #123d2c20;
+}
+.nav-cta, .navbtn {
+  border-radius: 999px;
+  padding: 12px 18px;
+  box-shadow: 0 5px 14px #ffc24735;
+}
+.hero {
+  width: min(1240px, calc(100% - 56px));
+  grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
+  gap: clamp(36px, 5vw, 72px);
+  padding-top: clamp(58px, 7vw, 100px);
+  padding-bottom: clamp(60px, 7vw, 96px);
+}
+.hero-copy { max-width: 590px; }
+.eyebrow { letter-spacing: .17em; font-size: .7rem; }
+h1 {
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  line-height: .96;
+  letter-spacing: -.075em;
+}
+h1 > span { position: relative; width: fit-content; }
+h1 > span::after {
+  content: "";
+  display: block;
+  width: 72%;
+  height: 5px;
+  margin-top: 12px;
+  border-radius: 9px;
+  background: var(--gold);
+  transform: skewX(-24deg);
+}
+.hero-intro { max-width: 465px; font-size: 1.07rem; }
+.button, .btn {
+  border-radius: 999px;
+  padding-left: 22px;
+  padding-right: 22px;
+}
+.button-primary {
+  box-shadow: 0 9px 22px #103b2b24;
+}
+.hero-visual { padding: 0 0 18px 18px; }
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -20px;
+  right: -16px;
+  width: 42%;
+  height: 35%;
+  border-top: 3px solid var(--gold);
+  border-right: 3px solid var(--gold);
+  border-radius: 0 22px 0 0;
+}
+.hero-visual::after {
+  content: "LEARN  •  PRACTISE  •  PROGRESS";
+  position: absolute;
+  z-index: 2;
+  left: -4px;
+  top: 28px;
+  padding: 11px 15px;
+  border: 1px solid #ffffffa6;
+  border-radius: 999px;
+  background: #fffdf4;
+  color: var(--forest);
+  box-shadow: 0 9px 25px #102b1a17;
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+.photo-frame {
+  height: clamp(390px, 43vw, 560px);
+  border-radius: 190px 16px 16px 16px;
+  box-shadow: 0 30px 70px #142b1c20;
+}
+.photo-frame img { object-position: center 48%; }
+.photo-caption {
+  left: 25px;
+  right: 25px;
+  bottom: 25px;
+  padding: 18px;
+  border: 1px solid #ffffff25;
+  border-radius: 14px;
+  background: #102d21c9;
+  backdrop-filter: blur(12px);
+}
+.caption-icon { border-radius: 50%; }
+.offer-bar {
+  background: #fff;
+  border-color: #e5e9e1;
+}
+.offer-inner { min-height: 98px; }
+.offer-inner p { color: var(--forest); }
+.offer-inner b { border-radius: 10px 10px 10px 3px; }
+.section { padding-top: clamp(76px, 8vw, 112px); padding-bottom: clamp(76px, 8vw, 112px); }
+.section-heading { margin-bottom: 38px; }
+.section-heading h2, .contact-copy h2 {
+  font-size: clamp(2.6rem, 4.4vw, 4rem);
+  letter-spacing: -.07em;
+}
+.section-description { max-width: 400px; }
+.training-card {
+  position: relative;
+  min-height: 290px;
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px #122b1b05;
+}
+.training-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 28px;
+  right: 28px;
+  height: 3px;
+  border-radius: 0 0 6px 6px;
+  background: #dfe8dc;
+}
+.training-card-feature {
+  background: #f0f5ed;
+  border: 1px solid #d1dfce;
+}
+.training-card-feature::before { background: var(--gold); }
+.card-number { border-radius: 12px 12px 12px 4px; }
+.training-card h3 { font-size: 1.38rem; }
+.training-card > a { font-size: .9rem; }
+.pricing-section {
+  position: relative;
+  overflow: hidden;
+  background: #edf2e9;
+  border-color: #e0e8dc;
+}
+.pricing-section::before {
+  content: "";
+  position: absolute;
+  top: -150px;
+  right: -140px;
+  width: 380px;
+  height: 380px;
+  border: 1px solid #123d2c12;
+  border-radius: 50%;
+  box-shadow: 0 0 0 35px #123d2c05, 0 0 0 75px #123d2c04;
+  pointer-events: none;
+}
+.pricing-inner { position: relative; }
+.price-card {
+  border-radius: 17px;
+  padding: 30px;
+  box-shadow: 0 14px 38px #122b1b0b;
+}
+.price-card-dark {
+  background: linear-gradient(145deg, #103b2b 0%, #174b35 100%);
+  box-shadow: 0 18px 38px #103b2b20;
+}
+.price-card h3 { font-size: 1.6rem; }
+.price-symbol { border-radius: 12px 12px 12px 4px; }
+.price-cta { padding-top: 20px; }
+.extras-panel {
+  border-radius: 16px;
+  box-shadow: 0 8px 24px #122b1b06;
+}
+.contact-inner {
+  border-radius: 20px;
+  box-shadow: 0 24px 60px #103b2b20;
+  background: linear-gradient(120deg, #103b2b 0%, #174e36 100%);
+}
+.contact-number { letter-spacing: -.055em; }
+.site-footer { border-top: 4px solid var(--gold); }
+a { text-underline-offset: 4px; }
+a:focus-visible { outline-offset: 5px; }
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    width: calc(100% - 40px);
+  }
+  h1 { font-size: clamp(3rem, 6vw, 4.5rem); }
+  .photo-frame { height: clamp(340px, 48vw, 470px); }
+  .hero-visual::after { font-size: .53rem; left: -5px; }
+  .training-card { padding: 23px; }
+}
+@media (max-width: 700px) {
+  .hero {
+    width: calc(100% - 36px);
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding-top: 48px;
+  }
+  h1 { font-size: clamp(3.25rem, 11vw, 4.5rem); }
+  .hero-visual { padding-left: 8px; padding-right: 5px; }
+  .photo-frame { height: clamp(310px, 83vw, 450px); border-radius: 120px 14px 14px 14px; }
+  .hero-visual::before { top: -12px; right: -2px; }
+  .hero-visual::after { top: 18px; left: -2px; padding: 9px 11px; font-size: .52rem; }
+  .photo-caption { left: 14px; right: 14px; bottom: 14px; padding: 13px; }
+  .section-heading h2, .contact-copy h2 { font-size: clamp(2.45rem, 8.5vw, 3.2rem); }
+  .training-card { min-height: 235px; }
+  .price-card { padding: 24px 21px; }
+  .contact-inner { border-radius: 17px; }
+}
+@media (max-width: 380px) {
+  .hero-visual::after { letter-spacing: .06em; }
+  .photo-caption { gap: 9px; }
+  .caption-icon { width: 36px; height: 36px; flex-basis: 36px; }
+}
