@@ -139,7 +139,7 @@ h1 > span { display: block; color: var(--sa-green); }
   .site-header, body > header { min-height: 72px; padding: 0 16px; gap: 14px; }
   .brand-mark, .brand > b { width: 39px; height: 39px; }
   nav { gap: 14px; font-size: .82rem; }
-  nav > a:not(.nav-cta) { display: none; }
+  nav > a:not(.nav-cta):not(.navbtn) { display: none; }
   .nav-cta, .navbtn { padding: 10px 12px; gap: 8px; }
   .hero { width: calc(100% - 36px); padding: 42px 0 40px; grid-template-columns: 1fr; gap: 34px; }
   .hero-copy { max-width: 600px; }
