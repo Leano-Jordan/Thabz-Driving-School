@@ -5,6 +5,8 @@
   const header = document.querySelector(".site-header, body > header");
   const nav = header && header.querySelector("nav");
   const menuToggle = header && header.querySelector(".menu-toggle");
+  let floatingSuppressed = false;
+  const floatingVisibleTargets = new Set();
 
   const progress = document.createElement("div");
   progress.className = "scroll-progress";
@@ -18,7 +20,7 @@
     progress.style.transform = "scaleX(" + percentage + ")";
     if (header) header.classList.toggle("is-scrolled", scrollTop > 12);
     const floating = document.querySelector(".floating-whatsapp");
-    if (floating) floating.classList.toggle("is-visible", scrollTop > 240);
+    if (floating) floating.classList.toggle("is-visible", scrollTop > 240 && !floatingSuppressed);
   }
   window.addEventListener("scroll", updateScrollUI, { passive: true });
   window.addEventListener("resize", updateScrollUI, { passive: true });
@@ -67,6 +69,24 @@
   chat.dataset.event = "WHATSAPP_CLICK";
   document.body.appendChild(chat);
 
+  // Avoid covering the page's main enquiry action or footer links.
+  if ("IntersectionObserver" in window) {
+    const hideTargets = document.querySelectorAll(
+      ".contact-inner, .contact-page-hero, .service-close, .contact-bottom-cta, .site-footer"
+    );
+    if (hideTargets.length) {
+      const floatingObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) floatingVisibleTargets.add(entry.target);
+          else floatingVisibleTargets.delete(entry.target);
+        });
+        floatingSuppressed = floatingVisibleTargets.size > 0;
+        updateScrollUI();
+      }, { threshold: 0.05 });
+      hideTargets.forEach((target) => floatingObserver.observe(target));
+    }
+  }
+
   document.querySelectorAll("[data-event]").forEach((element) => {
     element.addEventListener("click", () => {
       const eventName = element.dataset.event;
@@ -104,6 +124,7 @@
       if (target) {
         event.preventDefault();
         target.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+        if (targetId === "#main-content" && typeof target.focus === "function") target.focus({ preventScroll: true });
         if (window.history && window.history.replaceState) window.history.replaceState(null, "", targetId);
       }
     });
