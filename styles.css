@@ -460,3 +460,6 @@ body.motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0
   .not-found h1 { font-size: clamp(3rem, 10vw, 4.7rem); }
   .not-found-actions { align-items: flex-start; flex-direction: column; gap: 18px; }
 }
+
+/* Visible focus for the keyboard skip-navigation destination. */
+main[tabindex="-1"]:focus-visible { outline: 3px solid var(--coral); outline-offset: 5px; }
