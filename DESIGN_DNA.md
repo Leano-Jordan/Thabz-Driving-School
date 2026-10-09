@@ -1,36 +1,34 @@
 # Thabz Driving School — Design DNA
 
-Status: Prospect homepage demo; not yet approved for production.
+Status: Prospect demo; designed to sell the direction, not pretend the full production website is finished.
 
-Rosscore standardizes product quality, not visual sameness. This project uses a driving-school-specific direction rather than inheriting the plumbing site's visual identity.
+Rosscore standards product quality, not visual sameness. This concept should feel like a practical South African driving school: human, locally familiar, confident and straightforward. It should not resemble car insurance, a dealership, a car marketplace or a template landing page.
 
-## Business and customer
-- Category: Driving school / licence training.
-- Search context: Thabz Driving School in Centurion; exact coverage must be confirmed with the owner.
-- Primary audience: people comparing licence-training options, including first-time learners and adults returning to driving.
-- Primary objective: qualified enquiries by WhatsApp or phone.
-- Primary actions: ask about a package, confirm inclusions, enquire about a licence category.
+## Audience and conversion
+- Primary audience: people comparing learner, driving licence, Code 8, Code 10, Code 14 and PDP options.
+- Main job: understand the next step, compare the listed price options, then reach Thabz with a useful question.
+- Primary conversions: WhatsApp enquiries and tap-to-call.
+- Keep contact obvious; show package prices instead of hiding them behind several clicks.
+- No fake booking widget, review score, pass rate, qualification or trust badge.
 
-## Positioning
-Help visitors understand their next step, compare the listed options and contact the school without friction. Be calm, encouraging, clear and practical. Use South African licence terminology and rand pricing.
+## Visual system
+- Restrained South African flag-inspired palette: deep green for structure, South African green for links/labels, gold for primary calls to action, and small red/blue/black accents in a thin top stripe.
+- Warm white and soft sage do most of the work. Do not paint every section a flag colour or use a full bright-orange contact block.
+- Strong editorial headline, readable body copy, natural photography, clear spacing, simple borders and small-radius cards.
+- The hero must show a real driving-learning context. The previous abstract road graphic was too generic and read like insurance branding.
+- Photo currently used is a CC0 PxHere placeholder: https://pxhere.com/en/photo/1708306. It is not a photo of Thabz's own learner or vehicle; replace it with approved brand photography when available.
+- Avoid fake South African location claims or another school's branded vehicles.
 
-## Visual direction
-- Warm off-white background, deep green, lime accents and restrained orange CTA treatment.
-- Typography and spacing should feel modern, clear and dependable.
-- Use a road/route motif as supporting visual language, not a luxury-car campaign.
-- The experience should feel relevant to a local driving school, not an American dealership, car marketplace or automotive brand campaign.
-- Avoid generic AI landing-page composition, fake stock testimonials, invented instructor imagery and fabricated trust badges.
+## Research signals applied
+- [Centurion Driving School](https://www.centuriondrivingschool.co.za/) puts its categories, practical offer and contact methods in view.
+- [Centurion Driving School packages](https://www.centuriondrivingschool.co.za/packages/) makes package choice and prices directly scannable.
+- [Pretoria Driving School](https://www.pretoriadrivingschool.co.za/) exposes lesson options, price ranges and direct contact.
+- The demo adopts useful patterns—plain service categories, visible prices and low-friction contact—without copying another school's branding or adding unverified claims.
 
-## Conversion and content
-- Make phone and WhatsApp actions obvious, especially on mobile.
-- Present Code 8 & 10 and Code 14 prices in separate groups.
-- Keep application/issue fees separate from training packages.
-- Explain that listed prices are transcribed from a supplied photo and must be reconfirmed.
-- Never imply a guaranteed pass or publish unsupported claims.
+## Content boundaries
+- Prices and phone number come from the project material supplied; current status and package inclusions still need direct confirmation for production.
+- Phrase the site as an invitation to enquire, not a promise that a package includes a specific service.
+- Never imply a guaranteed pass or publish fabricated testimonials, ratings, instructor credentials, coverage or opening hours.
 
-## Evidence and unknowns
-Confirmed from supplied photo: phone number and the listed package/fee amounts documented in README.md.
-Still unverified: current pricing, package inclusions, exact service area, operating hours, transmission type, pick-up/drop-off, instructor credentials, pass rates, reviews and registration/accreditation.
-
-## Reuse boundary
-This is a one-page-led sales demo. Do not add full booking/payment functionality or production claims until the owner confirms scope, facts and budget.
+## Scope
+This is a homepage-led sales demo with lightweight supporting pages. Do not build booking, payments or a backend before the owner chooses the direction, confirms details and agrees to scope.
